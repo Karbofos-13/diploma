@@ -2,8 +2,10 @@ absl-py==2.3.0
 asttokens==3.0.0
 astunparse==1.6.3
 attrs==25.3.0
+blinker==1.9.0
 certifi==2025.6.15
 charset-normalizer==3.4.2
+click==8.2.1
 cloudpickle==3.1.1
 colorama==0.4.6
 comm==0.2.2
@@ -14,6 +16,7 @@ decorator==5.2.1
 et_xmlfile==2.0.0
 executing==2.2.0
 fastjsonschema==2.21.1
+Flask==3.1.1
 flatbuffers==25.2.10
 fonttools==4.58.1
 gast==0.6.0
@@ -24,6 +27,7 @@ idna==3.10
 ipykernel==6.29.5
 ipython==9.3.0
 ipython_pygments_lexers==1.1.1
+itsdangerous==2.2.0
 jedi==0.19.2
 Jinja2==3.1.6
 joblib==1.5.1
