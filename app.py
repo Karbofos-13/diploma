@@ -1,4 +1,3 @@
-# importing libraries
 from flask import Flask, render_template, request
 import tensorflow as tf
 from tensorflow import keras
@@ -6,10 +5,10 @@ from keras.models import load_model
 import numpy as np
 import os
 
-# creating instance of the class
+
 app = Flask(__name__)
 
-# load the trained model
+
 model_path = 'dnn_model.keras'
 if os.path.exists(model_path):
     model = load_model(model_path)
@@ -23,7 +22,6 @@ def index():
     
     if request.method == 'POST':
         try:
-            # extract input data from the forms
             density = float(request.form.get('density', 0))
             elastic_modulus = float(request.form.get('elastic_modulus', 0))
             hardener_amount = float(request.form.get('hardener_amount', 0))
@@ -37,12 +35,11 @@ def index():
             step = float(request.form.get('step', 0))
             density_wave = float(request.form.get('density_wave', 0))
             
-            # prepare the input data for prediction            
             input_data = np.array([[density, elastic_modulus, hardener_amount, epoxy_group, flash_point,
                                     surface_density, elastic_modulus_tension, tensile_strength,
                                     resin_consumption, angle, step, density_wave]], dtype=np.float32)
             
-            # perform prediction
+            
             prediction_result = float(model.predict(input_data)[0][0])
             
         except Exception as e:
