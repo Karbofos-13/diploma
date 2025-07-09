@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предсказание соотношения</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box">
+            <div class="form-header">
+                <h2>Калькулятор соотношения</h2>
+            </div>
+
+            <form id="input" name="input" method="POST" class="form">
+                <div class="form-group">
+                    <label for="density">Плотность, кг/м<sup>3</sup>: </label>
+                    <input type="number" step="any" id="density" name="density" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="elastic_modulus">Модуль упругости, ГПа: </label>
+                    <input type="number" step="any" id="elastic_modulus" name="elastic_modulus" required />
+                </div>
+                    
+                <div class="form-group">
+                    <label for="hardener_amount">Количество отвердителя, м.%: </label>
+                    <input type="number" step="any" id="hardener_amount" name="hardener_amount" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="epoxy_group">Содержание эпоксидных групп, %_2: </label>
+                    <input type="number" step="any" id="epoxy_group" name="epoxy_group" required />
+                </div>
+                    
+                <div class="form-group">
+                    <label for="flash_point">Температура вспышки, C_2: </label>
+                    <input type="number" step="any" id="flash_point" name="flash_point" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="surface_density">Поверхностная плотность, г/м<sup>2</sup>: </label>
+                    <input type="number" step="any" id="surface_density" name="surface_density" required />
+                </div>
+                    
+                <div class="form-group">
+                    <label for="elastic_modulus_tension">Модуль упругости при растяжении, ГПа: </label>
+                    <input type="number" step="any" id="elastic_modulus_tension" name="elastic_modulus_tension" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="tensile_strength">Прочность при растяжении, МПа: </label>
+                    <input type="number" step="any" id="tensile_strength" name="tensile_strength" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="resin_consumption">Потребление смолы, г/м<sup>2</sup>: </label>
+                    <input type="number" step="any" id="resin_consumption" name="resin_consumption" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="angle">Угол нашивки, град: </label>
+                    <input type="number" step="any" id="angle" name="angle" required />
+                </div>
+                    
+                <div class="form-group">
+                    <label for="step">Шаг нашивки: </label>
+                    <input type="number" step="any" id="step" name="step" required />
+                </div>
+                    
+                <div class="form-group">
+                    <label for="density_wave">Плотность нашивки: </label>
+                    <input type="number" step="any" id="density_wave" name="density_wave" required />
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" name="button">Рассчитать</button>
+                
+                    {% if prediction_result is not none %}
+                        <div class="result">
+                            Результат: {{ "%.4f"|format(prediction_result) }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if error %}
+                        <div class="error">{{ error }}</div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
